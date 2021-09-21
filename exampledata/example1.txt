@@ -1,0 +1,7 @@
+Acacia
+Baobab
+Beech
+Birch
+Elm
+Oak
+fir

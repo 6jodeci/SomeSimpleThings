@@ -16,6 +16,7 @@ import (
 )
 
 type words struct { // извлекаемые слова помещаются в структуру
+	sync.Mutex
 	found map[string]int
 }
 
@@ -33,6 +34,8 @@ func main() {
 	}
 	wg.Wait()
 	fmt.Println("Words that appear more than once:") // вывод результатов поиска
+	w.Lock()                                         // заблокировать объект, изменить и разблокировать в defer
+	defer w.Unlock()
 	for word, count := range w.found {
 		if count > 1 {
 			fmt.Printf("%s: %d\n", word, count)
@@ -45,6 +48,8 @@ func newWords() *words { // создание нового экземпляра �
 }
 
 func (w *words) add(word string, n int) { // фиксирование количества входа слова
+	w.Lock() // заблокировать объект, изменить и разблокировать в defer
+	defer w.Unlock()
 	count, ok := w.found[word]
 	if !ok { // если слово не зафиксировано, то добавляем
 		w.found[word] = n

@@ -40,8 +40,8 @@ func compress(filename string) error {
 	}
 	defer out.Close()
 
-	gzout := gzip.NewWriter(out) //compress and write the data to an appropriate file
-	_, err = io.Copy(gzout, in)  //necessary copying
+	gzout := gzip.NewWriter(out) // compress and write the data to an appropriate file
+	_, err = io.Copy(gzout, in)  // necessary copying
 	gzout.Close()
 
 	return err

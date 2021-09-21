@@ -17,7 +17,7 @@ func echo(in io.Reader, out io.Writer) { // является обычной фу
 
 func main() {
 	fmt.Println("Let's Print!")
-	go echo(os.Stdin, os.Stdout) //вызов функции echo как go - подпрограммы
+	go echo(os.Stdin, os.Stdout) // вызов функции echo как go - подпрограммы
 	time.Sleep(15 * time.Second) // 15s пауза
 	fmt.Println("Timed out.")    // Вывод сообщения о завершении ожидания
 	os.Exit(0)

@@ -6,7 +6,8 @@ import (
 	"os"
 	"strings"
 )
-
+// Функция Concat объединяет строки, разделяя их пробелами.
+// Она возвращает пустую строку и ошибку, если не получила ни одной строки.
 func Concat(parts ...string) (string, error) {
 	if len(parts) == 0 {
 		return "", errors.New("No strings supplied")
